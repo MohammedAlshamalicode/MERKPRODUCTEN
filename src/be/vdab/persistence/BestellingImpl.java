@@ -23,32 +23,32 @@ public class BestellingImpl implements Bestelling{
 
     @Override
     public List<Product> lijstGesorteerdOpProductnummer() {
-        return bestelling.stream().sorted().collect(Collectors.toList());
+        return bestelling.stream().sorted().toList();
     }
 
     @Override
     public List<Product> lijstGesorteerdOpMerk() {
-        return bestelling.stream().sorted(Product.sorteerOpmerkNaam()).collect(Collectors.toList());
+        return bestelling.stream().sorted(Product.sorteerOpmerkNaam()).toList();
     }
 
     @Override
     public List<Product> lijstGesorteerdOpVolume() {
-        return bestelling.stream().sorted(Comparator.comparingInt(Product::getVolume)).collect(Collectors.toList());
+        return bestelling.stream().sorted(Comparator.comparingInt(Product::getVolume)).toList();
     }
 
     @Override
     public List<Product> lijstVanHetMerk(String merk) {
-        return bestelling.stream().filter(p -> p.getMerk().equalsIgnoreCase(merk)).collect(Collectors.toList());
+        return bestelling.stream().filter(p -> p.getMerk().equalsIgnoreCase(merk)).toList();
     }
 
     @Override
     public List<Product> lijstProductenOnderVijftigEuro() {
-        return bestelling.stream().filter(p -> p.getPrijs() < 50).collect(Collectors.toList());
+        return bestelling.stream().filter(p -> p.getPrijs() < 50).toList();
     }
 
     @Override
     public List<Product> lijstVanAlleParfums() {
-        return bestelling.stream().filter(p -> p instanceof Parfum).collect(Collectors.toList());
+        return bestelling.stream().filter(p -> p instanceof Parfum).toList();
     }
 
     @Override
@@ -63,10 +63,6 @@ public class BestellingImpl implements Bestelling{
 
     @Override
     public double totalePrijs() {
-        double totalPrijs = 0 ;
-        for (Product artikle : bestelling){
-            totalPrijs += artikle.getPrijs();
-        }
-        return  totalPrijs;
+        return  bestelling.stream().mapToDouble(Product::getPrijs).sum();
     }
 }
