@@ -54,10 +54,10 @@ public class TestApp {
 
         System.out.printf("\nTotale prijs: €%.2f", bestelling.totalePrijs());
         System.out.println();
-        var formater = DateTimeFormatter.ofPattern("HH:mm:ss");
-        var nuDate = LocalDate.now();
-        var nuTime = LocalTime.now().format(formater);
-        System.out.println(nuDate+"\n"+nuTime);
+//        var formater = DateTimeFormatter.ofPattern("HH:mm:ss");
+//        var nuDate = LocalDate.now();
+//        var nuTime = LocalTime.now().format(formater);
+//        System.out.println(nuDate+"\n"+nuTime);
 
     }
 }
