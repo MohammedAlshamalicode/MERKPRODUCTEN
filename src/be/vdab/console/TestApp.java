@@ -6,7 +6,14 @@ import be.vdab.persistence.Data;
 import be.vdab.model.Product;
 import be.vdab.persistence.BestellingImpl;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.List;
+
+import static java.time.LocalTime.now;
 
 public class TestApp {
     public static void main(String[] args) {
@@ -46,6 +53,11 @@ public class TestApp {
         System.out.println("\nDuurste product:\n" + product);
 
         System.out.printf("\nTotale prijs: €%.2f", bestelling.totalePrijs());
+        System.out.println();
+        var formater = DateTimeFormatter.ofPattern("HH:mm:ss");
+        var nuDate = LocalDate.now();
+        var nuTime = LocalTime.now().format(formater);
+        System.out.println(nuDate+"\n"+nuTime);
 
     }
 }

@@ -38,12 +38,12 @@ public class BestellingImpl implements Bestelling{
 
     @Override
     public List<Product> lijstVanHetMerk(String merk) {
-        return bestelling.stream().filter(p -> p.getMerk().equalsIgnoreCase(p.getMerk())).collect(Collectors.toList());
+        return bestelling.stream().filter(p -> p.getMerk().equalsIgnoreCase(merk)).collect(Collectors.toList());
     }
 
     @Override
     public List<Product> lijstProductenOnderVijftigEuro() {
-        return bestelling.stream().filter(p -> p.getPrijs() > 50).collect(Collectors.toList());
+        return bestelling.stream().filter(p -> p.getPrijs() < 50).collect(Collectors.toList());
     }
 
     @Override
